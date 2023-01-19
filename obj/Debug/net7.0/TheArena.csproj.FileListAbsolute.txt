@@ -1,0 +1,15 @@
+C:\Users\Jon\source\repos\TheArena\bin\Debug\net7.0\TheArena.exe
+C:\Users\Jon\source\repos\TheArena\bin\Debug\net7.0\TheArena.deps.json
+C:\Users\Jon\source\repos\TheArena\bin\Debug\net7.0\TheArena.runtimeconfig.json
+C:\Users\Jon\source\repos\TheArena\bin\Debug\net7.0\TheArena.dll
+C:\Users\Jon\source\repos\TheArena\bin\Debug\net7.0\TheArena.pdb
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\TheArena.csproj.AssemblyReference.cache
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\TheArena.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\TheArena.AssemblyInfoInputs.cache
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\TheArena.AssemblyInfo.cs
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\TheArena.csproj.CoreCompileInputs.cache
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\TheArena.dll
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\refint\TheArena.dll
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\TheArena.pdb
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\TheArena.genruntimeconfig.cache
+C:\Users\Jon\source\repos\TheArena\obj\Debug\net7.0\ref\TheArena.dll
