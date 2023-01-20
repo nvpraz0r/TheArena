@@ -26,5 +26,18 @@ namespace TheArena
             }
             return Console.ReadLine().ToLower();
         }
+        public static void CleanConsole(int waitTimeSeconds)
+        {
+            try
+            {
+                waitTimeSeconds *= 1000;
+                System.Threading.Thread.Sleep(waitTimeSeconds);
+                Console.Clear();
+            }
+            catch (Exception)
+            {
+                //can't return anything without the compiler freaking out about a void method
+            }
+        }
     }
 }

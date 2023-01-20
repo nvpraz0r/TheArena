@@ -9,31 +9,35 @@ namespace TheArena
     class Character
     {
         // player information
-        private string playerName;
-        private string playerRace;
-        private string playerJob;
+        public string playerName {get; set;}
+        public string playerRace {get; set;}
+        public string playerJob {get; set;}
 
         // player stats
-        private int playerHealth {get; set;}
-        private int playerAttack {get; set;}
-        private int playerDefense {get; set;}
-        private int playerAgility {get; set;}
+        public int playerHealth {get; set;}
+        public int playerAttack {get; set;}
+        public int playerDefense {get; set;}
+        public int playerAgility {get; set;}
 
         // SPACE BELOW FOR PLAYER GEAR
 
-        public Character(string playerChoosenName, string playerChoosenRace, string playerChoosenJob)
+        public Character()
         {
-            this.playerName = playerChoosenName;
-            this.playerRace = playerChoosenRace;
-            this.playerJob = playerChoosenJob;
+        }
+
+        public Character(string name, string race, string job)
+        {
+            this.playerName = name;
+            this.playerRace = race;
+            this.playerJob = job;
         }
 
         public Character(int health, int attack, int defense, int agility)
         {
-            playerHealth = health;
-            playerAttack = attack;
-            playerDefense = defense;
-            playerAgility = agility;
+            this.playerHealth = health;
+            this.playerAttack = attack;
+            this.playerDefense = defense;
+            this.playerAgility = agility;
         }
     }
 }

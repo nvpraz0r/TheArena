@@ -4,164 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*
-
-    NOTES
-    -----
-    add player gear into Character.cs
-    -----
-
-*/
-
-
 namespace TheArena
 {
     class Game
     {
-        // Main Method
-        // Design philosophy: only loop when I absolutely need to loop
+        public static List<string> races = new List<string>();
+        public static List<int> raceStats = new List<int>();
+
+        public static List<string> jobs = new List<string>();
+        public static List<int> jobStats = new List<int>();
+
+        public static string header;
+
         static void Main(string[] args)
         {
-            Welcome();
-            CharacterCreation();
-        }
+            ReadJobs();
 
-        //
-        public static void Welcome()
-        {
-            Console.WriteLine("\t\tWelcome");
-            Console.WriteLine("\t\tTo The");
-            Console.WriteLine("\t\tA R E N A");
-            CleanConsole(10);
-        }
-
-        public static void CharacterCreation()
-        {            
-            bool running = true;
-
-            string name;
-            string race;
-            string job;
-
-            // {HP, ATK, DF, AGL}
-            int[] human = {5, 5, 5, 5};
-            int[] dwarf = {6, 5, 6, 4};
-            int[] elf = {4, 5, 4, 7};
-
-            // array of races
-            string[] races = {"Human", "Dwarf", "Elf"};
-
-            // {HP, ATK, DF, AGL}
-            // 0, 1, 2, 3 - stat distribution
-            int[] warrior = {2, 3, 1, 0};
-            int[] theif = {1, 2, 0, 3};
-            int[] wizard = {1, 3, 0, 2};
-            
-            // array of jobs
-            string[] jobs = {"Warrior", "Theif", "Wizard"};
-
-            StringUtils stringUtils = new StringUtils();
-
-            // name
-            do
+            for(int i = 0; i < jobStats.Count; i++)
             {
-                Console.WriteLine("Please enter your name.");
-
-                string nameChoice = Console.ReadLine();
-
-                if(!String.IsNullOrEmpty(nameChoice))
-                {
-                    name = nameChoice;
-                }
-
-            } while (running);
-
-            // set running back to true
-            running = true;
-
-            // race
-            do
-            {
-                Console.WriteLine("Please select a race");
-
-                //
-                string raceChoice = stringUtils.CharacterRaceMenu(races);
-
-                // 
-                switch (raceChoice)
-                {
-                    case "1":
-                        race = "human";
-                        running = false;
-                        break;
-                    case "2":
-                        race = "dwarf";
-                        running = false;
-                        break;
-                    case "3":
-                        race = "elf";
-                        running = false;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid input. Please try again.");
-                        CleanConsole(2);
-                        break;
-                }
-
-
-
-            }while(running);
-
-            // set running back to true
-            running = true;
-
-            // class
-            do
-            {
-                // prompt for user input and display choices
-                Console.WriteLine("Please select a class");
-
-                // 
-                string jobChoice = stringUtils.CharacterJobMenu(jobs);
-
-                switch (jobChoice)
-                {
-                    case "1":
-                        job = "warrior";
-                        running = false;
-                        break;
-                    case "2":
-                        job = "theif";
-                        running = false;
-                        break;
-                    case "3":
-                        job = "wizard";
-                        running = false;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid input. Please try agian");
-                        CleanConsole(2);
-                        break;
-                }
-                
-            } while (running);
-
-            // finalize settings
-
-        }
-
-        public static void CleanConsole(int waitTimeSeconds)
-        {
-            try
-            {
-                waitTimeSeconds *= 1000;
-                System.Threading.Thread.Sleep(waitTimeSeconds);
-                Console.Clear();
+                Console.WriteLine(jobStats[i]);
             }
-            catch (Exception)
+        }
+
+        public static void ReadJobs()
+        {
+            string filename = @"~\data\jobs.csv";
+            using(var reader = new StreamReader(filename))
             {
-                //can't return anything without the compiler freaking out about a void method
+                header = reader.ReadLine();
+                while(!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] values = line.Split(",");
+                    // name,hp,attack,defense,agility
+                    jobs.Add(values[0]);
+                    jobStats.Add(Convert.ToInt32(values[1]));
+                    jobStats.Add(Convert.ToInt32(values[2]));
+                    jobStats.Add(Convert.ToInt32(values[3]));
+                    jobStats.Add(Convert.ToInt32(values[4]));
+                }
             }
-        } 
+        }
+
+
     }
 }
