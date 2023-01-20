@@ -36,30 +36,117 @@ namespace TheArena
         }
 
         public static void CharacterCreation()
-        {
-            //What's your name?
-            //choose a race
-            //choose a class
-            //calculate what to send to the character constructor
+        {            
+            bool running = true;
+
+            string name;
+            string race;
+            string job;
 
             // {HP, ATK, DF, AGL}
             int[] human = {5, 5, 5, 5};
             int[] dwarf = {6, 5, 6, 4};
             int[] elf = {4, 5, 4, 7};
 
-            bool running = true;
+            // array of races
+            string[] races = {"Human", "Dwarf", "Elf"};
 
+            // {HP, ATK, DF, AGL}
+            // 0, 1, 2, 3 - stat distribution
+            int[] warrior = {2, 3, 1, 0};
+            int[] theif = {1, 2, 0, 3};
+            int[] wizard = {1, 3, 0, 2};
+            
+            // array of jobs
+            string[] jobs = {"Warrior", "Theif", "Wizard"};
+
+            StringUtils stringUtils = new StringUtils();
+
+            // name
             do
             {
-                Console.WriteLine("What is your name?");
-                string input = Console.ReadLine();
-                int num = -1;
+                Console.WriteLine("Please enter your name.");
 
-                if(!int.TryParse(input, out num))
+                string nameChoice = Console.ReadLine();
+
+                if(!String.IsNullOrEmpty(nameChoice))
                 {
-                    
+                    name = nameChoice;
                 }
-            } while(running);
+
+            } while (running);
+
+            // set running back to true
+            running = true;
+
+            // race
+            do
+            {
+                Console.WriteLine("Please select a race");
+
+                //
+                string raceChoice = stringUtils.CharacterRaceMenu(races);
+
+                // 
+                switch (raceChoice)
+                {
+                    case "1":
+                        race = "human";
+                        running = false;
+                        break;
+                    case "2":
+                        race = "dwarf";
+                        running = false;
+                        break;
+                    case "3":
+                        race = "elf";
+                        running = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input. Please try again.");
+                        CleanConsole(2);
+                        break;
+                }
+
+
+
+            }while(running);
+
+            // set running back to true
+            running = true;
+
+            // class
+            do
+            {
+                // prompt for user input and display choices
+                Console.WriteLine("Please select a class");
+
+                // 
+                string jobChoice = stringUtils.CharacterJobMenu(jobs);
+
+                switch (jobChoice)
+                {
+                    case "1":
+                        job = "warrior";
+                        running = false;
+                        break;
+                    case "2":
+                        job = "theif";
+                        running = false;
+                        break;
+                    case "3":
+                        job = "wizard";
+                        running = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input. Please try agian");
+                        CleanConsole(2);
+                        break;
+                }
+                
+            } while (running);
+
+            // finalize settings
 
         }
 
