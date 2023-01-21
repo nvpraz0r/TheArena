@@ -8,6 +8,14 @@ namespace TheArena
 {
     public class StringUtils
     {
+        public static void Title()
+        {
+            Console.WriteLine("Welcome");
+            Console.WriteLine("To The");
+            Console.WriteLine("A R E N A");
+            CleanConsole(4);
+        }
+        
         // list available jobs for a player to choose from
         public string CharacterJobMenu(string[] jobs)
         {
@@ -17,6 +25,7 @@ namespace TheArena
             }
             return Console.ReadLine().ToLower();
         }
+
         // list available races for a player to choose from
         public string CharacterRaceMenu(string[] races)
         {
@@ -26,6 +35,8 @@ namespace TheArena
             }
             return Console.ReadLine().ToLower();
         }
+
+        // this method will clear the console given the amount of seconds
         public static void CleanConsole(int waitTimeSeconds)
         {
             try
