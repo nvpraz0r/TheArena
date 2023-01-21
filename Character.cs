@@ -18,8 +18,8 @@ namespace TheArena
         public int playerAttack {get; set;}
         public int playerDefense {get; set;}
         public int playerAgility {get; set;}
-
-        // SPACE BELOW FOR PLAYER GEAR
+        public int playerMagicAttack {get; set;}
+        public int playerMagicDefense {get; set;}
 
         public Character()
         {
