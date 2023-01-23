@@ -32,12 +32,14 @@ namespace TheArena
             this.playerJob = job;
         }
 
-        public Character(int health, int attack, int defense, int agility)
+        public Character(int health, int attack, int defense, int agility, int magicAttack, int magicDefense)
         {
             this.playerHealth = health;
             this.playerAttack = attack;
             this.playerDefense = defense;
             this.playerAgility = agility;
+            this.playerMagicAttack = magicAttack;
+            this.playerMagicDefense = magicDefense;
         }
     }
 }
