@@ -11,7 +11,7 @@ namespace TheArena
         public static void Main(string[] args)
         {
             StringUtils stringUtils = new StringUtils();
-            
+
             stringUtils.Title();
             stringUtils.CharacterCreation();
         }

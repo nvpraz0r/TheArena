@@ -20,21 +20,26 @@ namespace TheArena
         {
             // stat design: all start at 5 (except MGD) - to gain one point you must lose one point
             // {HP, ATK, DF, AGL, MAG, MGD}
-            int[] human = { 5, 5, 5, 5, 5, 4 };
-            int[] dwarf = { 6, 5, 6, 4, 4, 4 };
-            int[] elf = { 4, 5, 4, 6, 6, 5 };
+            // human = { 5, 5, 5, 5, 5, 4 };
+            // dwarf = { 6, 5, 6, 4, 4, 4 };
+            // elf = { 4, 5, 4, 6, 6, 5 };
 
-            // array of races
-            string[] races = { "Human", "Dwarf", "Elf" };
+            List<Race> playableRaces = new List<Race>();
+
+            playableRaces.Add(new Race("Human", 5, 5, 5, 5, 5, 4));
+            playableRaces.Add(new Race("Dwarf", 6, 5, 6, 4, 4, 4));
+            playableRaces.Add(new Race("Elvan", 4, 5, 4, 6, 6, 5));            
 
             // 0, 1, 2, 3 - stat distribution
             // {HP, ATK, DF, AGL, MAG, MGD}
-            int[] warrior = { 2, 3, 1, 0, 0, 0 };
-            int[] theif = { 1, 2, 0, 3, 0, 0 };
-            int[] wizard = { 1, 0, 0, 0, 3, 2 };
+            // int[] warrior = { 2, 3, 1, 0, 0, 0 };
+            // int[] theif = { 1, 2, 0, 3, 0, 0 };
+            // int[] wizard = { 1, 0, 0, 0, 3, 2 };
 
-            // array of jobs
-            string[] jobs = { "Warrior", "Theif", "Wizard" };
+            List<Job> playableJobs = new List<Job>();
+            playableJobs.Add(new Job("Warrior", 2, 3, 1, 0, 0, 0));
+            playableJobs.Add(new Job("Thief", 1, 2, 0, 3, 0, 0));
+            playableJobs.Add(new Job("Wizard", 1, 0, 0, 0, 3, 2));
 
             // boolean to facilitate input validation
             bool running = true;
@@ -57,8 +62,13 @@ namespace TheArena
                 // prompt
                 Console.WriteLine("Please select a race.");
 
+                foreach(Race displayRace in playableRaces)
+                {
+                    Console.WriteLine(displayRace);
+                }
+
                 // begin user input section
-                string raceChoice = CharacterRaceMenu(races);
+                string raceChoice = Console.ReadLine();
                 switch (raceChoice)
                 {
                     case "1":
@@ -92,10 +102,16 @@ namespace TheArena
             do
             {
 
-                Console.WriteLine("Please select a job class.");
+                // prompt
+                Console.WriteLine("Please select a job.");
+
+                foreach(Job displayJob in playableJobs)
+                {
+                    Console.WriteLine(displayJob);
+                }
 
                 // begin user input section
-                string jobChoice = CharacterRaceMenu(jobs);
+                string jobChoice = Console.ReadLine();
                 switch (jobChoice)
                 {
                     case "1":
