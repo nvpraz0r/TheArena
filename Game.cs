@@ -6,15 +6,27 @@ using System.Threading.Tasks;
 
 /**
 *
-*   Today's Objective(s):
+*   Current Objective(s):
 *   =====================
-*   Send character data to Character Class
-*   Retrieve character data that was given to Character Class and print it to console to prove proof of concept
+*   =Retrieve data from playableRaces & playableJob lists
+*
+*   =Calculate data from relevant data from playableRaces & playableJob lists
+*       -test data transfered properly by requesting it at the end of chracter creation
+*   
+*   =Retrieve character data that was given to Character Class and print it to console to prove proof of concept
 *
 *
-*   Not a necessity but nice if possible
+*   Short Term Objective(s):
 *   =====================
-*   Reformat displayed information during character creation process
+*   =Reformat displayed information during character creation process
+*       -text should be centered
+*
+*
+*   Completed Objective(s):
+*   =====================
+*   =Send character data to Character Class ✓✓✓
+*       -test data transfered properly by requesting it at the end of character creation ✓✓✓
+*
 *
 *
 *
@@ -44,7 +56,7 @@ namespace TheArena
             // arena.Start();
         }
 
-        public static void CharacterCreation()
+        internal static void CharacterCreation()
         {
             // stat design: all start at 5 (except MGD) - to gain one point you must lose one point
             // {HP, ATK, DF, AGL, MAG, MGD}
@@ -166,14 +178,18 @@ namespace TheArena
 
             } while (running);
 
-            // send it all to Character Class
-            // Console.WriteLine(name + race + job);
-
+            // send player character data to Character Class
             Character player = new Character(name, race, job);
 
+            // test to confirm data made it to the recipient
             Console.WriteLine(player.playerName);
             Console.WriteLine(player.playerRace);
             Console.WriteLine(player.playerJob);
+        }
+
+        internal static void CalculatePlayerStats(int health, int attack, int agility, int defense, int magicAttack, int magicDefense)
+        {
+            Console.WriteLine("");
         }
     }
 }
