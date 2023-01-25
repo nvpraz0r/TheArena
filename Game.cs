@@ -174,7 +174,8 @@ namespace TheArena
             CalculatePlayerStats(race, job);
         }
 
-        // this method does nothing for now -- retrieve data from the List objects then come back to calculate
+        // this method calculates player attributes driven by the race and job selections
+        // then sends the calculated attributes to the character class
         internal static void CalculatePlayerStats(string race, string job)
         {
             // intermediary arrays - these will be used as an inbetween
@@ -231,17 +232,8 @@ namespace TheArena
                 raceArray[i] += jobArray[i]; 
             }
 
-            // psuedo code
             // send stats to Character Class
-            // Character.Character(({0}, {1}), var1, var 2);
             Character playerStats = new Character(raceArray[0], raceArray[1], raceArray[2], raceArray[3], raceArray[4], raceArray[5]);
-
-            Console.WriteLine("Health {0}", playerStats.playerHealth);
-            Console.WriteLine("Attack {0}", playerStats.playerAttack);
-            Console.WriteLine("Defense {0}", playerStats.playerDefense);
-            Console.WriteLine("Agility {0}", playerStats.playerAgility);
-            Console.WriteLine("MagAtk {0}", playerStats.playerMagicAttack);
-            Console.WriteLine("MagDef {0}", playerStats.playerMagicDefense);
         }
     }
 }
