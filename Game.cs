@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 *   Current Objective(s):
 *   =====================
 *
-*   
-*   =Retrieve character data that was given to Character Class and print it to console to prove proof of concept
+*
 *
 *
 *   Short Term Objective(s):
@@ -36,7 +35,9 @@ using System.Threading.Tasks;
 *   =Send user input data to CalculatePlayerStats ✓✓✓
 *       -print stats to confirm proper merge ✓✓✓
 *
+*   =Send elements of an array to Character Class✓✓✓
 *
+*   =Retrieve character data that was given to Character Class and print it to console to prove proof of concept✓✓✓
 *
 */
 
@@ -216,23 +217,23 @@ namespace TheArena
                     break;
             }
 
-            // merging two arrays
+            // merge race array with job array -- order doesn't matter as long as the one with the sum is sent to the character class
             for(int i = 0; i < raceArray.Length; i++)
             {
                 raceArray[i] += jobArray[i]; 
             }
 
-            // test merge of the two arrays
-            foreach(int i in raceArray)
-            {
-                System.Console.WriteLine(i);
-            }
-
-
             // psuedo code
             // send stats to Character Class
             // Character.Character(({0}, {1}), var1, var 2);
+            Character playerStats = new Character(raceArray[0], raceArray[1], raceArray[2], raceArray[3], raceArray[4], raceArray[5]);
 
+            Console.WriteLine("Health {0}", playerStats.playerHealth);
+            Console.WriteLine("Attack {0}", playerStats.playerAttack);
+            Console.WriteLine("Defense {0}", playerStats.playerDefense);
+            Console.WriteLine("Agility {0}", playerStats.playerAgility);
+            Console.WriteLine("MagAtk {0}", playerStats.playerMagicAttack);
+            Console.WriteLine("MagDef {0}", playerStats.playerMagicDefense);
         }
     }
 }
