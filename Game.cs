@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 *
 *   Current Objective(s):
 *   =====================
+*
 *   =Retrieve data from playableRaces & playableJob lists
 *
 *   =Calculate data from relevant data from playableRaces & playableJob lists
@@ -26,6 +27,10 @@ using System.Threading.Tasks;
 *   =====================
 *   =Send character data to Character Class ✓✓✓
 *       -test data transfered properly by requesting it at the end of character creation ✓✓✓
+*
+*   =Condense switch statements✓✓✓
+*       -if(input == "xyz" || "")✓✓✓
+*       -use ternary operator if possible
 *
 *
 *
@@ -58,12 +63,9 @@ namespace TheArena
 
         internal static void CharacterCreation()
         {
-            // stat design: all start at 5 (except MGD) - to gain one point you must lose one point
+            // stat design: all start at 5 (except MGD)
+            // design philosophy: to gain one point you must lose one point
             // {HP, ATK, DF, AGL, MAG, MGD}
-            // human = { 5, 5, 5, 5, 5, 4 };
-            // dwarf = { 6, 5, 6, 4, 4, 4 };
-            // elf = { 4, 5, 4, 6, 6, 5 };
-
             List<Race> playableRaces = new List<Race>();
             playableRaces.Add(new Race("Human", 5, 5, 5, 5, 5, 4));
             playableRaces.Add(new Race("Dwarf", 6, 5, 6, 4, 4, 4));
@@ -71,10 +73,6 @@ namespace TheArena
 
             // 0, 1, 2, 3 - job bonus stat distribution
             // {HP, ATK, DF, AGL, MAG, MGD}
-            // int[] warrior = { 2, 3, 1, 0, 0, 0 };
-            // int[] theif = { 1, 2, 0, 3, 0, 0 };
-            // int[] wizard = { 1, 0, 0, 0, 3, 2 };
-
             List<Job> playableJobs = new List<Job>();
             playableJobs.Add(new Job("Warrior", 2, 3, 1, 0, 0, 0));
             playableJobs.Add(new Job("Thief", 1, 2, 0, 3, 0, 0));
@@ -98,44 +96,30 @@ namespace TheArena
             // race
             do
             {
-                // prompt
-                Console.WriteLine("\n\t\tPlease select a race.\n");
+                System.Console.WriteLine("Please select a race.");
 
                 foreach(Race displayRace in playableRaces)
                 {
-                    Console.WriteLine("=-=-=-=-=-=-=");
-                    Console.WriteLine(displayRace);
-                    System.Console.WriteLine();
+                    System.Console.WriteLine(displayRace);
                 }
 
-                // begin user input section
                 string raceChoice = Console.ReadLine();
-                switch (raceChoice)
+
+                if(raceChoice.ToLower() == "human" || raceChoice.ToLower() == "dwarf" ||raceChoice.ToLower() == "elvan")
                 {
-                    case "human":
-                        race = "human";
-                        running = false;
-                        StringUtils.CleanConsole(1);
-                        break;
-                    case "dwarf":
-                        race = "dwarf";
-                        running = false;
-                        StringUtils.CleanConsole(1);
-                        break;
-                    case "elvan":
-                        race = "elvan";
-                        running = false;
-                        StringUtils.CleanConsole(1);
-                        break;
-                    default:
-                        Console.WriteLine("Invalid input. Please try again");
-                        StringUtils.CleanConsole(3);
-                        break;
+                    race = raceChoice.ToLower();
+                    running = false;
+                    StringUtils.CleanConsole(1);
+                } 
+                else
+                {
+                    System.Console.WriteLine("Invalid input. Please try again.");
+                    StringUtils.CleanConsole(3);
                 }
 
             } while (running);
 
-            // set running to true
+            // set running to true for reuse in the next loop
             running = true;
 
             // 
@@ -153,27 +137,17 @@ namespace TheArena
 
                 // begin user input section
                 string jobChoice = Console.ReadLine();
-                switch (jobChoice)
+
+                if(jobChoice.ToLower() == "warrior" || jobChoice.ToLower() == "thief" ||jobChoice.ToLower() == "wizard")
                 {
-                    case "warrior":
-                        job = "warrior";
-                        running = false;
-                        StringUtils.CleanConsole(1);
-                        break;
-                    case "thief":
-                        job = "thief";
-                        running = false;
-                        StringUtils.CleanConsole(1);
-                        break;
-                    case "wizard":
-                        job = "wizard";
-                        running = false;
-                        StringUtils.CleanConsole(1);
-                        break;
-                    default:
-                        Console.WriteLine("Invalid input. Please try again");
-                        StringUtils.CleanConsole(3);
-                        break;
+                    job = jobChoice.ToLower();
+                    running = false;
+                    StringUtils.CleanConsole(1);
+                }
+                else
+                {
+                    System.Console.WriteLine("Invalid input. Please try again.");
+                    StringUtils.CleanConsole(3);
                 }
 
             } while (running);
@@ -187,9 +161,27 @@ namespace TheArena
             Console.WriteLine(player.playerJob);
         }
 
-        internal static void CalculatePlayerStats(int health, int attack, int agility, int defense, int magicAttack, int magicDefense)
+        // this method does nothing for now -- retrieve data from the List objects then come back to calculate
+        internal static void CalculatePlayerStats(string race, string job)
         {
-            Console.WriteLine("");
+            // stat design: all start at 5 (except MGD) - to gain one point you must lose one point
+            // {HP, ATK, DF, AGL, MAG, MGD}
+            int[] human = { 5, 5, 5, 5, 5, 4 };
+            int[] dwarf = { 6, 5, 6, 4, 4, 4 };
+            int[] elvan = { 4, 5, 4, 6, 6, 5 };
+
+            // 0, 1, 2, 3 - job bonus stat distribution
+            // {HP, ATK, DF, AGL, MAG, MGD}
+            int[] warrior = { 2, 3, 1, 0, 0, 0 };
+            int[] thief = { 1, 2, 0, 3, 0, 0 };
+            int[] wizard = { 1, 0, 0, 0, 3, 2 };
+
+            
+        }
+
+        internal static void AddStats(int[] race, int[] job)
+        {
+
         }
     }
 }
