@@ -9,13 +9,19 @@ using System.Threading.Tasks;
 *   Current Objective(s):
 *   =====================
 *
-*
+*   =Reformat displayed information during gameplay
+*       -text should be centered
 *
 *
 *   Short Term Objective(s):
 *   =====================
-*   =Reformat displayed information during gameplay
-*       -text should be centered
+*
+*   =Combat
+*       -check opponent agility
+*           - if x > y then x goes first -- you get the picture
+*
+*
+*
 *
 *
 *   Completed Objective(s):
@@ -83,16 +89,18 @@ namespace TheArena
             bool running = true;
 
             // user choices
-            string name = "";
             string race = "";
             string job = "";
 
             //
             // name
             Console.WriteLine("Please enter your name.");
-            name = Console.ReadLine();
+            string name = Console.ReadLine();
             StringUtils.CleanConsole(1);
 
+
+
+            // both race and job selection are in do-while loops because user picks them from a list
             // 
             // race
             do
