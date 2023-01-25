@@ -9,17 +9,13 @@ using System.Threading.Tasks;
 *   Current Objective(s):
 *   =====================
 *
-*   =Retrieve data from playableRaces & playableJob lists
-*
-*   =Calculate data from relevant data from playableRaces & playableJob lists
-*       -test data transfered properly by requesting it at the end of chracter creation
 *   
 *   =Retrieve character data that was given to Character Class and print it to console to prove proof of concept
 *
 *
 *   Short Term Objective(s):
 *   =====================
-*   =Reformat displayed information during character creation process
+*   =Reformat displayed information during gameplay
 *       -text should be centered
 *
 *
@@ -32,9 +28,13 @@ using System.Threading.Tasks;
 *       -if(input == "xyz" || "")✓✓✓
 *       -use ternary operator if possible
 *
+*   =Retrieve data from playableRaces & playableJob lists✓✓✓
 *
+*   =Calculate data from relevant data from playableRaces & playableJob lists✓✓✓
+*       -test data transfered properly by requesting it at the end of chracter creation✓✓✓
 *
-*
+*   =Send user input data to CalculatePlayerStats ✓✓✓
+*       -print stats to confirm proper merge ✓✓✓
 *
 *
 *
@@ -159,11 +159,19 @@ namespace TheArena
             Console.WriteLine(player.playerName);
             Console.WriteLine(player.playerRace);
             Console.WriteLine(player.playerJob);
+
+            // FOR NOW calculate the stats being sent without sending them
+            // print results to confirm proper merging of arrays
+            CalculatePlayerStats(race, job);
         }
 
         // this method does nothing for now -- retrieve data from the List objects then come back to calculate
         internal static void CalculatePlayerStats(string race, string job)
         {
+            // intermediary arrays - these will be used as an inbetween
+            int[] raceArray = {};
+            int[] jobArray = {};
+
             // stat design: all start at 5 (except MGD) - to gain one point you must lose one point
             // {HP, ATK, DF, AGL, MAG, MGD}
             int[] human = { 5, 5, 5, 5, 5, 4 };
@@ -176,11 +184,54 @@ namespace TheArena
             int[] thief = { 1, 2, 0, 3, 0, 0 };
             int[] wizard = { 1, 0, 0, 0, 3, 2 };
 
-            
-        }
+            // set intermediary race array to it's input counterpart
+            switch (race.ToLower())
+            {
+                case "human":
+                    raceArray = human;
+                    break;
+                case "dwarf":
+                    raceArray = dwarf;
+                    break;
+                case "elvan":
+                    raceArray = elvan;
+                    break;
+                default:
+                    break;
+            }
 
-        internal static void AddStats(int[] race, int[] job)
-        {
+            // set intermediary job array to it's input counterpart
+            switch (job.ToLower())
+            {
+                case "warrior":
+                    jobArray = warrior;
+                    break;
+                case "thief":
+                    jobArray = thief;
+                    break;
+                case "wizard":
+                    jobArray = wizard;
+                    break;
+                default:
+                    break;
+            }
+
+            // merging two arrays
+            for(int i = 0; i < raceArray.Length; i++)
+            {
+                raceArray[i] += jobArray[i]; 
+            }
+
+            // test merge of the two arrays
+            foreach(int i in raceArray)
+            {
+                System.Console.WriteLine(i);
+            }
+
+
+            // psuedo code
+            // send stats to Character Class
+            // Character.Character(({0}, {1}), var1, var 2);
 
         }
     }
