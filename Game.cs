@@ -66,8 +66,22 @@ namespace TheArena
             // preparing this function call ahead of time
             // this method handles the main gameplay loop
             // arena.Start();
+
+            System.Console.WriteLine("Back in the main method");
+
+            Character character = new Character();
+            System.Console.WriteLine(character.playerName);
+            System.Console.WriteLine(character.playerRace);
+            System.Console.WriteLine(character.playerJob);
+            System.Console.WriteLine(character.playerHealth);
+            System.Console.WriteLine(character.playerAttack);
+            System.Console.WriteLine(character.playerDefense);
+            System.Console.WriteLine(character.playerAgility);
+            System.Console.WriteLine(character.playerMagicAttack);
+            System.Console.WriteLine(character.playerMagicDefense);
         }
 
+        // this method handles character creation and input validation for character creation
         internal static void CharacterCreation()
         {
             // stat design: all start at 5 (except MGD)
@@ -164,13 +178,7 @@ namespace TheArena
             // send player character data to Character Class
             Character player = new Character(name, race, job);
 
-            // test to confirm data made it to the recipient
-            Console.WriteLine(player.playerName);
-            Console.WriteLine(player.playerRace);
-            Console.WriteLine(player.playerJob);
-
-            // FOR NOW calculate the stats being sent without sending them
-            // print results to confirm proper merging of arrays
+            // send player chosen race and job to CalculatePlayerStats method
             CalculatePlayerStats(race, job);
         }
 
