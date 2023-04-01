@@ -5,6 +5,9 @@ namespace TheArena
 {
     public class CharacterCreation
     {
+
+        public CharacterCreation(){}
+
         // don't know why this works, but it does
         // https://csharp.net-tutorials.com/collections/lists/
         List<Race> RaceList = new List<Race>()
@@ -20,6 +23,9 @@ namespace TheArena
             new Job() {name = "wizard", health = 20, attack = 5, defense = 5},
             new Job() {name = "rogue", health = 20, attack = 5, defense = 5}
         };
+
+        List<Job> test = new List<Job>();
+        test.Add(new Job("asdf", 20, 5, 5));
 
         // this method welcomes the player
         public void WelcomePlayer()
