@@ -6,27 +6,6 @@ namespace TheArena
     public class CharacterCreation
     {
 
-        public CharacterCreation(){}
-
-        // don't know why this works, but it does
-        // https://csharp.net-tutorials.com/collections/lists/
-        List<Race> RaceList = new List<Race>()
-        {
-            new Race() {name = "human", health = 20, attack = 5, defense = 5},
-            new Race() {name = "elvan", health = 20, attack = 5, defense = 5},
-            new Race() {name = "dwarf", health = 20, attack = 5, defense = 5}
-        };
-
-        List<Job> JobList = new List<Job>()
-        {
-            new Job() {name = "knight", health = 20, attack = 5, defense = 5},
-            new Job() {name = "wizard", health = 20, attack = 5, defense = 5},
-            new Job() {name = "rogue", health = 20, attack = 5, defense = 5}
-        };
-
-        List<Job> test = new List<Job>();
-        test.Add(new Job("asdf", 20, 5, 5));
-
         // this method welcomes the player
         public void WelcomePlayer()
         {
@@ -49,6 +28,8 @@ namespace TheArena
                 Console.Clear();
 
                 System.Console.WriteLine("Please enter your character's name");
+                System.Console.WriteLine("\t=====||=====");
+                System.Console.WriteLine();
 
                 input = Console.ReadLine();
 
@@ -69,6 +50,8 @@ namespace TheArena
                 Console.Clear();
 
                 System.Console.WriteLine("Please enter your character's race");
+                System.Console.WriteLine("\t=====||=====");
+                System.Console.WriteLine();
 
                 input = ChooseRace();
 
@@ -105,6 +88,8 @@ namespace TheArena
                 Console.Clear();
 
                 System.Console.WriteLine("Please choose your profession");
+                System.Console.WriteLine("\t=====||=====");
+                System.Console.WriteLine();
 
                 input = ChooseJob();
 
@@ -141,13 +126,18 @@ namespace TheArena
 
         public string ChooseRace()
         {
+            List<Race> RaceList = new List<Race>();
+            RaceList.Add(new Race("Human", 40, 5, 5));
+            RaceList.Add(new Race("Elvan", 40, 5, 5));
+            RaceList.Add(new Race("Dwarf", 40, 5, 5));
+
             // looks unconvential, but it does exactly what I want it to
             // (lines up with the data below)
             System.Console.WriteLine("Race" + "\t " + "Health" + "\t " + "Attack" + "\t " + "Defense");
 
             for(int i = 0; i < RaceList.Count; i++)
             {
-                System.Console.WriteLine(RaceList[i].name + "\t " + RaceList[i].health + "\t " + RaceList[i].attack + "\t " + RaceList[i].defense);
+                System.Console.WriteLine(RaceList[i].Name + "\t " + RaceList[i].Health + "\t " + RaceList[i].Attack + "\t " + RaceList[i].Defense);
             }
 
             return Console.ReadLine();
@@ -156,13 +146,18 @@ namespace TheArena
         public string ChooseJob()
         {
 
+            List<Job> JobList = new List<Job>();
+            JobList.Add(new Job("Knight", 40, 5, 5));
+            JobList.Add(new Job("Wizard", 40, 5, 5));
+            JobList.Add(new Job("Rogue", 40, 5, 5));
+
             // looks unconvential, but it does exactly what I want it to
             // (lines up with the data below)
             System.Console.WriteLine("Job" + "\t " + "Health" + "\t " + "Attack" + "\t " + "Defense");
 
             for(int i = 0; i < JobList.Count; i++)
             {
-                System.Console.WriteLine(JobList[i].name + "\t " + JobList[i].health + "\t " + JobList[i].attack + "\t " + JobList[i].defense);
+                System.Console.WriteLine(JobList[i].Name + "\t " + JobList[i].Health + "\t " + JobList[i].Attack + "\t " + JobList[i].Defense);
             }
 
             return Console.ReadLine();

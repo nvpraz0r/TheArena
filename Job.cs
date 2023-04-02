@@ -2,17 +2,17 @@ namespace TheArena
 {
     class Job
     {
-        public string? name {get; set;}
-        public int health {get; set;}
-        public int attack {get; set;}
-        public int defense {get; set;}
+        public string? Name {get; set;}
+        public int Health {get; set;}
+        public int Attack {get; set;}
+        public int Defense {get; set;}
 
-        public Job(string name, int health, int attack, int defense)
+        public Job (string Name, int Health, int Attack, int Defense)
         {
-            this.name = name;
-            this.health = health;
-            this.attack = attack;
-            this.defense = defense;
+            this.Name = Name;
+            this.Health = Health;
+            this.Attack = Attack;
+            this.Defense = Defense;
         }
     }
 }
