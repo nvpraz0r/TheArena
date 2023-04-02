@@ -21,8 +21,11 @@ namespace TheArena
         {
             Utils utils = new Utils();
             Character player = new Character();
+
             string? input;
             bool running = true;
+
+            // player types their name
             do
             {
                 Console.Clear();

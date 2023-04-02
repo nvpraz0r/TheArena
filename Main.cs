@@ -35,6 +35,8 @@ namespace TheArena
             characterCreation.CreateCharacter();
 
             // main game play loop
+            Combat combat = new Combat();
+            
         }
     }
 }
